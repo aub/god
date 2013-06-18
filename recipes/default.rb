@@ -37,4 +37,8 @@ template "/etc/god/master.god" do
   mode 0755
 end
 
-runit_service "god"
+runit_service 'god' do
+  options({
+    :god_command => node[:god][:executable]
+  })
+end
