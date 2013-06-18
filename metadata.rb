@@ -7,6 +7,7 @@ long_description  IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version           "1.0.10"
 
 recipe "god", "Installs god and starts it as a runit service"
+recipe "god::rvm_boot_file", "Create a boot file for rvm to run"
 
 %w{debian ubuntu}.each do |os|
   supports os
