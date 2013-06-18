@@ -12,8 +12,9 @@ God::Contacts::Email.defaults do |d|
   d.server_domain = "<%= node[:domain] %>"
 end
 
-God.contact(:email) do |c|
-  c.name = 'ops'
-  c.to_email = 'ops@<%= node[:domain] %>'
-end
-
+<%- @contacts.each do |contact| %>
+  God.contact(:email) do |c|
+    c.name = '<%= contact[:name] %>'
+    c.to_email = '<%= contact[:email] %>'
+  end
+<%- end %>

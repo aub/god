@@ -31,10 +31,13 @@ directory "/etc/god/conf.d" do
 end
 
 template "/etc/god/master.god" do
-  source "master.god.erb"
-  owner "root"
-  group "root"
+  source 'master.god.erb'
+  owner 'root'
+  group 'root'
   mode 0755
+  variables({
+    :contacts => node[:god][:contacts] || []
+  })
 end
 
 runit_service 'god' do
