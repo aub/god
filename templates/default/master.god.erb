@@ -14,6 +14,6 @@ end
 
 God.contact(:email) do |c|
   c.name = 'ops'
-  c.email = 'ops@<%= node[:domain] %>'
+  c.to_email = 'ops@<%= node[:domain] %>'
 end
 
