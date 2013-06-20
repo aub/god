@@ -40,6 +40,12 @@ template "/etc/god/master.god" do
   })
 end
 
+bash 'create boot file' do
+  code <<-EOH
+    /usr/local/rvm/bin/rvm wrapper #{node['rvm']['default_ruby']} bootup god
+  EOH
+end
+
 runit_service 'god' do
   options({
     :god_command => node[:god][:executable]
